@@ -28,6 +28,7 @@ class SplashScreenViewModel(private val mainRepository: MyRepository) : ViewMode
                 is HttpException -> {
                     val code = throwable.code()
                     val body = throwable.response()?.errorBody()
+
                     emit(
                         Result.error(data = null, message = getErrorMessage(body), code = code)
                     )
