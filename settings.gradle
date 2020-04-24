@@ -1,0 +1,2 @@
+rootProject.name='CatMovie2'
+include ':app'
