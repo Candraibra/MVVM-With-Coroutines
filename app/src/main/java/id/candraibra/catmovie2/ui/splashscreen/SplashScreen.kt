@@ -43,7 +43,7 @@ class SplashScreen : BaseActivity<SplashScreenViewModel>() {
                     Status.SUCCESS -> {
                         resource.data?.let { token ->
                             setToken(token.requestToken)
-                            allowToken()
+                            createSession()
                         }
                     }
                     Status.ERROR -> {
@@ -57,29 +57,8 @@ class SplashScreen : BaseActivity<SplashScreenViewModel>() {
         })
     }
 
-    private fun allowToken() {
-        viewModel.postLogin()
-            .observe(this, Observer {
-                it?.let { resource ->
-                    when (resource.status) {
-                        Status.SUCCESS -> {
-                            resource.data?.let {
-                                createSession()
-                            }
-                        }
-                        Status.ERROR -> {
-                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                            Timber.d(it.message)
-                        }
-                        Status.LOADING -> {
-                        }
-                    }
-                }
-            })
-    }
-
     private fun createSession() {
-        viewModel.postSession()
+        viewModel.getSession()
             .observe(this, Observer {
                 it?.let { resource ->
                     when (resource.status) {
@@ -101,7 +80,7 @@ class SplashScreen : BaseActivity<SplashScreenViewModel>() {
                     }
                 }
             })
-
+        viewModel.postValidateAndSession()
     }
 
 

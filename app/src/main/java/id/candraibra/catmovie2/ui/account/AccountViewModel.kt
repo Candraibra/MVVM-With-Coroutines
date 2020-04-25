@@ -12,21 +12,21 @@ import java.io.IOException
 class AccountViewModel(private val mainRepository: MyRepository) : ViewModel() {
 
     fun getAccountDetail() = liveData(Dispatchers.IO) {
-        emit(Result.loading(data = null))
+        emit(Result.loading())
         try {
-            emit(Result.success(data = mainRepository.getAccountDetail()))
+            emit(Result.success(mainRepository.getAccountDetail()))
         } catch (throwable: Throwable) {
             when (throwable) {
                 is HttpException -> {
                     val code = throwable.code()
                     val body = throwable.response()?.errorBody()
-                    emit(Result.error(data = null, message = getErrorMessage(body), code = code))
+                    emit(Result.error(getErrorMessage(body), code))
                 }
                 is IOException -> {
-                    emit(Result.error(data = null, message = "Network Error", code = 0))
+                    emit(Result.error("Network Error", 0))
                 }
                 else -> {
-                    emit(Result.error(data = null, message = "Error Occurred!", code = 0))
+                    emit(Result.error("Error Occurred!", 0))
                 }
             }
         }
