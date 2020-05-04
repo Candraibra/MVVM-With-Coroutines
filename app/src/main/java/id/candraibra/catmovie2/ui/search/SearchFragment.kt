@@ -20,8 +20,8 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(AccountViewModel::class.java)
+//        dashboardViewModel =
+//            ViewModelProviders.of(this).get(AccountViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_search, container, false)
 
         return root

@@ -6,7 +6,7 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "id.candraibra.catmovie2"
@@ -15,23 +15,15 @@ android {
         versionCode 2
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "API_KEY", '"9788b0a455eab1bc80b62332c966bf15"'
+        buildConfigField "String", "USERNAME", '"candraibra"'
+        buildConfigField "String", "PASSWORD", '"01012014"'
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
-            buildConfigField "String", "API_KEY", '"9788b0a455eab1bc80b62332c966bf15"'
-            buildConfigField "String", "USERNAME", '"candraibra"'
-            buildConfigField "String", "PASSWORD", '"01012014"'
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            minifyEnabled false
-            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
-            buildConfigField "String", "API_KEY", '"9788b0a455eab1bc80b62332c966bf15"'
-            buildConfigField "String", "USERNAME", '"candraibra"'
-            buildConfigField "String", "PASSWORD", '"01012014"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -68,7 +60,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.google.android.material:material:$material_version"
-    implementation "androidx.appcompat:appcompat:$appCombat_version"
     implementation "androidx.core:core-ktx:$ktx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
     implementation "androidx.cardview:cardview:$cardView_version"

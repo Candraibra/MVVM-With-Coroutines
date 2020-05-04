@@ -85,15 +85,15 @@ class SplashScreen : BaseActivity<SplashScreenViewModel>() {
 
 
     private fun setToken(token: String) {
-        PrefHelper().setString(PrefKey.TOKEN, token)
+        PrefHelper.setString(PrefKey.TOKEN, token)
     }
 
     private fun session(): String? {
-        return PrefHelper().getString(PrefKey.SESSION)
+        return PrefHelper.getString(PrefKey.SESSION)
     }
 
     private fun setSession(session: String) {
-        PrefHelper().setString(PrefKey.SESSION, session)
+        PrefHelper.setString(PrefKey.SESSION, session)
     }
 
     override fun getViewModel(): Class<SplashScreenViewModel> {

@@ -73,12 +73,12 @@ class SplashScreenViewModel(private val mainRepository: MyRepository) : ViewMode
     }
 
     private fun sessionRequest(): SessionRequest {
-        val token = PrefHelper().getString(PrefKey.TOKEN)!!
+        val token = PrefHelper.getString(PrefKey.TOKEN)!!
         return SessionRequest(token)
     }
 
     private fun loginRequest(): LoginRequest {
-        val token = PrefHelper().getString(PrefKey.TOKEN)!!
+        val token = PrefHelper.getString(PrefKey.TOKEN)!!
         return LoginRequest(PASSWORD, token, USERNAME)
     }
 }

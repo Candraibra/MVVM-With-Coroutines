@@ -7,23 +7,20 @@ import coil.Coil
 import coil.ImageLoader
 
 import id.candraibra.catmovie2.BuildConfig
+import id.candraibra.catmovie2.utils.ReleaseTree
 import timber.log.Timber
 
 
 class MyApplication : Application() {
+
     companion object {
         lateinit var getInstance: MyApplication
         private lateinit var sharedPreferences: SharedPreferences
-        private lateinit var ncSharedPreferences: SharedPreferences
-    }
-
-
-    init {
-        getInstance = this
     }
 
     override fun onCreate() {
         super.onCreate()
+        getInstance = this
         setupSharedPreferences()
         initCoil()
         initTimber()
@@ -42,7 +39,7 @@ class MyApplication : Application() {
                 }
             })
         } else {
-//            Timber.plant(ReleaseTree())
+           Timber.plant(ReleaseTree())
         }
     }
 
@@ -64,17 +61,11 @@ class MyApplication : Application() {
     private fun setupSharedPreferences() {
         sharedPreferences =
             getSharedPreferences(MyApplication::class.java.simpleName, Context.MODE_PRIVATE)
-        ncSharedPreferences =
-            getSharedPreferences(MyApplication::class.java.simpleName + "_NC", Context.MODE_PRIVATE)
     }
 
 
     fun getSharedPreferences(): SharedPreferences {
         return sharedPreferences
-    }
-
-    fun getNcSharedPreferences(): SharedPreferences {
-        return ncSharedPreferences
     }
 
 }
