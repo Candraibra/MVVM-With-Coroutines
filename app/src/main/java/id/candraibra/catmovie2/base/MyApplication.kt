@@ -45,7 +45,7 @@ class MyApplication : Application() {
 
     private fun initCoil() {
         Coil.setDefaultImageLoader {
-            ImageLoader(this.applicationContext) {
+            ImageLoader(this) {
                 crossfade(true)
                 //if yuu want to enable cache
 //                okHttpClient {
