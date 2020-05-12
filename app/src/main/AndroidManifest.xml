@@ -4,6 +4,7 @@
     package="id.candraibra.catmovie2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".base.MyApplication"

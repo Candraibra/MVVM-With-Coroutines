@@ -60,7 +60,7 @@ class AccountFragment : BaseFragment<AccountViewModel>() {
     }
 
     private fun setAccountId(accountId: Int) {
-        PrefHelper().setInt(PrefKey.ACCOUNT_ID, accountId)
+        PrefHelper.setInt(PrefKey.ACCOUNT_ID, accountId)
     }
 
     private fun setView(name:String) {
